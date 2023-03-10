@@ -3,7 +3,6 @@ import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
-import useWindowSize from "@rooks/use-window-size"
 //import { Oxanium } from 'next/font/google'
 
 
@@ -15,11 +14,6 @@ let height = 144;
 
 
 export default function Layout({ children, home }) {
-    const { innerWidth, innerHeight, outerHeight, outerWidth } = useWindowSize();
-    if (innerWidth != null && innerHeight != null) {
-        width = innerWidth;
-        height = innerHeight;
-    }
   return (
 
     <><div className={styles.iconlink}>
