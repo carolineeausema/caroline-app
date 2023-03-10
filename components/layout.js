@@ -24,7 +24,6 @@ export default function Layout({ children, home }) {
 
     <><div className={styles.iconlink}>
           <Link href='/'>
-              <div class='relative flex items-center justify-end h-10 cursor-pointer my-auto grid-cols-3 bg-black'>
                   <Image
                       src="/images/icon.jpg"
                       height={50}
@@ -32,7 +31,6 @@ export default function Layout({ children, home }) {
                       alt=""
                       object-fit="contain"
                       url='./' />
-              </div>
           </Link>
 
 
