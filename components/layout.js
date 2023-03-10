@@ -19,7 +19,7 @@ export default function Layout({ children, home }) {
     <><div className={styles.iconlink}>
           <Link href='/'>
                   <Image
-                      src="/images/icon.jpg"
+                      src="/images/icon.JPG"
                       height={50}
                       width={50}
                       alt=""
