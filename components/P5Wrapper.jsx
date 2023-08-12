@@ -1,15 +1,15 @@
-import { useEffect, useRef } from 'react';
+// components/p5Wrapper.js
+import React, { useEffect, useRef } from 'react';
+import p5 from 'p5';
 
 const P5Wrapper = ({ sketch }) => {
   const wrapperRef = useRef();
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const p5 = require('p5');
-      const canvasParentRef = wrapperRef.current;
-      new p5(sketch, canvasParentRef);
-    }
-  }, []);
+    const canvasParentRef = wrapperRef.current;
+
+    new p5(sketch, canvasParentRef);
+  }, [sketch]);
 
   return <div ref={wrapperRef}></div>;
 };
