@@ -6,7 +6,7 @@ export default function Custom404() {
     <>
     <div className={styles.container}>
       
-      <h3>sorry bae this is so embarrassing for me</h3>
+      <h3>sorry man this is so embarrassing for me</h3>
       <h1>404 - Page Not Found (;-;)</h1>
 
       <div className={styles.backToHome}>
