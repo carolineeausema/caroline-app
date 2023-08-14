@@ -48,6 +48,7 @@ const Sketch = () => {
     }, []);
 
     return (
+        
         <div style={{ position: 'relative' }}>
             <p
                 style={{
@@ -60,6 +61,7 @@ const Sketch = () => {
                 }}
             >
                 ** hi, this one will work best if you have a mouse. try wigglin around a little ☀︎
+                if ur on ur phone or something, just tap n do ur best.
             </p>
             <div
                 className={styles.container}
