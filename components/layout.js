@@ -3,95 +3,116 @@ import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
-//import { Oxanium } from 'next/font/google'
-
+import { useEffect, useRef, useState } from 'react';
 
 const name = 'Caroline Ausema';
 export const siteTitle = 'Ausema';
-let width = 144;
-let height = 144;
-//const inter = Oxanium({ subsets: ['latin'] })
 
+const Layout = ({ children, home }) => {
+  const p5Canvas = useRef(null);
+  const [scrollFactor, setScrollFactor] = useState(0);
 
-export default function Layout({ children, home }) {
+  useEffect(() => {
+    // Initialize p5.js sketch when the component mounts on the client side
+    const p5 = require('p5'); // Load p5.js dynamically
+    const sketch = (p) => {
+
+      p.setup = () => {
+      };
+
+      p.draw = () => {
+      };
+    };
+
+    // Create p5.js instance
+    new p5(sketch, p5Canvas.current);
+  }, []); // Only run this effect once, on mount
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+      const factor = scrollPosition / (windowHeight * 0.1); // Adjust this value to control the speed of fading
+      setScrollFactor(factor);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const logoOpacity = 1 - scrollFactor; // Fades the logo away as the user scrolls down
+  const textColor = `rgba(0,0,0, ${1 - scrollFactor})`; // Fades from black to transparent
+
   return (
+    <div className={styles.container}>
+      {/* p5.js canvas for the horizontal line waves */}
+      <div ref={p5Canvas} style={{ position: 'fixed', top: 0, left: 0, zIndex: -1, width: '100%', height: '100vh' }} />
 
-    <><div className={styles.iconlink}>
-          <Link href='/'>
-                  <Image
-                      src="/images/icon.JPG"
-                      height={50}
-                      width={50}
-                      alt=""
-                      object-fit="contain"
-                      url='./' />
-          </Link>
-
-
+      <div className={styles.iconlink} style={{ opacity: logoOpacity, position: 'fixed' }}>
+        <Link href='/'>
+          <Image
+            src="/images/icon.JPG"
+            alt=""
+            width={50}
+            height={50}
+            objectFit="contain"
+          />
+        </Link>
       </div>
-      <div className={styles.container}>
-
-              <Head>
-                  <link rel="icon" href="/favicon.ico" />
-                  <meta
-                      property="og:image"
-                      content={"images/icon.png"} />
-                  <meta name="og:title" content={siteTitle} />
-              </Head>
-              <header className={styles.header}>
-                  {home ? (
-                      <>
-                          <Link href="/">
-                              <Image
-                                  priority
-                                  src="/images/profile.jpg"
-                                  className={utilStyles}
-                                  height={216}
-                                  width={216}
-                                  alt="" />
-                          </Link>
-                          <h2 className={utilStyles.headingLg}>
-                              <Link href="/" className={utilStyles.colorInherit}>
-                                  {name}
-                              </Link>
-                          </h2>
-                      </>
-                  ) : (
-                      <>
-                          <Link href="/">
-                              <Image
-                                  priority
-                                  src="/images/profile.jpg"
-                                  className={utilStyles.borderCircle}
-                                  height={108}
-                                  width={108}
-                                  alt="" />
-                          </Link>
-                          <h2 className={utilStyles.headingLg}>
-                              <Link href="/" className={utilStyles.colorInherit}>
-                                  {name}
-                              </Link>
-                          </h2>
-                      </>
-                  )}
-              </header>
-              <main>{children}</main>
-              {!home && (
-                  <div className={styles.backToHome}>
-                      <Link href="/">← Back to home</Link>
-                  </div>
-              )}
-          </div>
-
-        <div className={styles.socialLinks}>
-            <div>
-                <Link href="https://www.linkedin.com/in/caroline-ausema/">↖︎ Connect with me on LinkedIn</Link>
+      <div className={styles.header} style={{ color: textColor }}>
+        {home ? (
+          <>
+            <Link href="/">
+              <Image
+                priority
+                src="/images/profile.png"
+                className={utilStyles}
+                alt=""
+                layout="responsive"
+                width={414}
+                height={317}
+              />
+            </Link>
+            <div className={styles.socialLinks}>
+              <Link href="https://www.linkedin.com/in/caroline-ausema/">↖︎ Connect with me on LinkedIn</Link>
             </div>
-
-            <div>
-                <Link href="https://www.instagram.com/carolineausema/">↖︎ Follow me on Instagram</Link>
-            </div>
-
-        </div></>
+            <h2 className={`${utilStyles.nameFont}`}>
+              <Link href="/" className={utilStyles.colorInherit}>
+                {name}
+              </Link>
+            </h2>
+          </>
+        ) : (
+          <>
+            <Link href="/">
+              <Image
+                priority
+                src="/images/profile.png"
+                className={utilStyles.borderCircle}
+                alt=""
+                width={108}
+                height={108}
+              />
+            </Link>
+            <h2 className={`${utilStyles.nameFont}`}>
+              <Link href="/" className={utilStyles.colorInherit}>
+                {name}
+              </Link>
+            </h2>
+          </>
+        )}
+      </div>
+      <main>{children}</main>
+      {!home && (
+        <div className={styles.backToHome}>
+          <Link href="/">← Back to home</Link>
+        </div>
+      )}
+    </div>
   );
-}
+};
+
+export default Layout;

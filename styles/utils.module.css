@@ -1,3 +1,5 @@
+@import url('https: //fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+
 .heading2Xl {
     font-size: 4.5rem;
     line-height: 1.2;
@@ -50,4 +52,9 @@
 
 .lightText {
     color: #666;
+}
+
+.nameFont {
+    font-family: 'Yeseva One';
+    font-size: 48px;
 }

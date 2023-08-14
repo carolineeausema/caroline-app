@@ -20,6 +20,14 @@ export default function Home({ allPostsData }) {
     
     <Layout home>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Art</h2>
+        <ul className={utilStyles.list}>
+          <li>
+              <Link href={`/mystomachlining`}>my stomach lining</Link>
+            </li>
+        </ul>
+      </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
