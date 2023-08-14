@@ -56,5 +56,12 @@
 
 .nameFont {
     font-family: 'Yeseva One';
-    font-size: 48px;
+    font-size: 2.5rem;
+}
+
+@media (max-width: 600px) {
+    .nameFont {
+        font-size: 1.5rem;
+        /* Adjust the font size for smaller screens */
+    }
 }
