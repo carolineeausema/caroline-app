@@ -55,9 +55,8 @@ const Sketch = () => {
                     fontSize: '9px',
                     position: 'absolute',
                     zIndex: 2,
-                    top: '50%',
                     left: '50%',
-                    transform: 'translate(-50%, -50%)',
+                    transform: 'translate(-50%, 50%)',
                 }}
             >
                 ** hi, this one will work best if you have a mouse. try wigglin around a little ☀︎
