@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
+import { FiMenu } from 'react-icons/fi';
 import { useEffect, useRef, useState } from 'react';
 
 const name = 'Caroline Ausema';
@@ -11,6 +12,11 @@ export const siteTitle = 'Ausema';
 const Layout = ({ children, home }) => {
   const p5Canvas = useRef(null);
   const [scrollFactor, setScrollFactor] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   useEffect(() => {
     // Initialize p5.js sketch when the component mounts on the client side
@@ -33,7 +39,7 @@ const Layout = ({ children, home }) => {
       const scrollPosition = window.scrollY || document.documentElement.scrollTop;
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
-      const factor = scrollPosition / (windowHeight * 0.1); // Adjust this value to control the speed of fading
+      const factor = scrollPosition / (windowHeight * 0.8); // Adjust this value to control the speed of fading
       setScrollFactor(factor);
     };
 
@@ -48,12 +54,36 @@ const Layout = ({ children, home }) => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.menuIcon} style={{opacity: logoOpacity}} onClick={toggleMenu}>
+        <div className={styles.menuOverlay} style={{ display: isMenuOpen ? 'block' : 'none' }}>
+        {
+          <div className={styles.menuItems}>
+            <ul>
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li>
+                <Link href="/link1">Link 1</Link>
+              </li>
+              <li>
+                <Link href="/link2">Link 2</Link>
+              </li>
+              <li>
+                <Link href="/link3">Link 3</Link>
+              </li>
+            </ul>
+          </div>
+        }
+        </div>
+        menu
+       </div>
       {/* p5.js canvas for the horizontal line waves */}
       <div ref={p5Canvas} style={{ position: 'fixed', top: 0, left: 0, zIndex: -1, width: '100%', height: '100vh' }} />
 
       <div className={styles.iconlink} style={{ opacity: logoOpacity, position: 'fixed' }}>
         <Link href='/'>
           <Image
+          style={utilStyles.logo}
             src="/images/icon.JPG"
             alt=""
             width={50}
@@ -76,9 +106,6 @@ const Layout = ({ children, home }) => {
                 height={317}
               />
             </Link>
-            <div className={styles.socialLinks}>
-              <Link href="https://www.linkedin.com/in/caroline-ausema/">↖︎ Connect with me on LinkedIn</Link>
-            </div>
             <h2 className={`${utilStyles.nameFont}`}>
               <Link href="/" className={utilStyles.colorInherit}>
                 {name}

@@ -24,7 +24,7 @@
 }
 
 .headingMd {
-    font-size: 1.2rem;
+    font-size: .6rem;
     line-height: 1.5;
 }
 
@@ -52,6 +52,11 @@
 
 .lightText {
     color: #666;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
 }
 
 .nameFont {

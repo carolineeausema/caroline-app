@@ -5,6 +5,7 @@
 }
 
 .iconlink {
+    position: fixed;
     margin: 2rem auto 2rem;
     padding: 0 2rem;
 }
@@ -25,4 +26,70 @@
     font-size: 14px;
     bottom: 0;
     position: absolute;
+}
+
+.menuOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background color */
+    display: none;
+    /* Initially hidden */
+    z-index: 9999;
+    /* Make sure it's above other content */
+}
+/* layout.module.css */
+.container {
+    /* ... (other styles) */
+    position: relative;
+}
+
+.menuIcon {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 1000;
+
+}
+
+.menuItems {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    /* Align the menu items to the right side */
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.menuItems ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menuItems li {
+    margin-bottom: 8px;
+}
+
+.menuItems a {
+    text-decoration: none;
+    /* Link color */
+    font-size: 16px;
+    /* Font size for menu items */
+    display: block;
+    transition: color 0.2s;
+    /* Smooth color transition on hover */
+}
+
+.menuItems a:hover {
+    color: #007bff;
+    /* Change color on hover */
 }

@@ -84,7 +84,7 @@ const FaceRecognition = () => {
       {/* Hide the video element with CSS */}
       <video id="video" autoPlay playsInline style={{ display: 'none' }}></video>
       {/* Use a separate canvas for face detection */}
-      <canvas id="canvas" style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}></canvas>
+      <canvas id="canvas" style={{ position: 'fixed', top: 0, left: 0, zIndex: 1 }}></canvas>
       
       <p style={{ fontSize: '9px' }}>** hi, i know it's suspect for me to be asking to access your camera. i'm not recording & your image isn't being saved anywhere. trust ★</p>
     </div>

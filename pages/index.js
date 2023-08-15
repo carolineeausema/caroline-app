@@ -1,34 +1,66 @@
+// pages/index.js
+
 import Head from 'next/head';
+import Image from 'next/image';
+import styles from '../styles/Home.module.css';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
+import { getSortedPostsData } from '../lib/posts';
 import Date from '../components/date';
-import Image from 'next/image';
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
+const Home = ({ allPostsData }) => {
+  const prof = [
+    {
+      text: 'Resume',
+      href: '/resume',
     },
-  };
-}
+    {
+      text: 'LinkedIn',
+      href: '/LinkedIn',
+    },
+    {
+      text: 'Spotify',
+      href: '/spotify',
+    },
+  ];
 
-export default function Home({ allPostsData }) {
+  const art = [
+    {
+      text: 'My Stomach Lining',
+      href: '/mystomachlining',
+    },
+    {
+      text: 'Mask',
+      href: '/mask',
+    },
+  ];
+
+  const linkSections = [
+    { title: 'Helpful Links', links: prof }, // Use the 'prof' array for the first link section
+    { title: 'Art', links: art }, // Use the 'links' array for the second link section
+  ];
+
   return (
-    
     <Layout home>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Art</h2>
-        <ul className={utilStyles.list}>
-          <li>
-              <Link href={`/mystomachlining`}>my stomach lining</Link>
-            </li>
-        </ul>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
+      {linkSections.map((section, sectionIndex) => (
+        <div key={sectionIndex} className={styles.gridContainer}>
+          <h5 className={styles.sectionTitleRow}>{section.title}</h5>
+          {section.links.map((link, index) => (
+            <Link href={link.href} key={index}>
+              <div className={styles.gridItem}>
+                <div className={styles.gridText}>
+                  <h3 className={utilStyles.headingMd}>{link.text}</h3>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      ))}
+        <h5 className={styles.sectionTitleRow}>Blog</h5>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
@@ -40,7 +72,17 @@ export default function Home({ allPostsData }) {
             </li>
           ))}
         </ul>
-      </section>
     </Layout>
   );
+};
+
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData,
+    },
+  };
 }
+
+export default Home;
