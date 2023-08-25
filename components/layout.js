@@ -54,7 +54,7 @@ const Layout = ({ children, home }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.menuIcon} style={{}} onClick={toggleMenu}>
+      <div className={styles.menuIcon} style={{ opacity: logoOpacity }} onClick={toggleMenu}>
         <div className={styles.menuOverlay} style={{ display: isMenuOpen ? 'block' : 'none' }}>
         {
           <div className={styles.menuItems}>

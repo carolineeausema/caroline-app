@@ -17,7 +17,7 @@ const Home = ({ allPostsData }) => {
     },
     {
       text: 'LinkedIn',
-      href: '/LinkedIn',
+      href: 'https://www.linkedin.com/in/caroline-ausema/',
     },
     {
       text: 'Spotify',
@@ -60,6 +60,7 @@ const Home = ({ allPostsData }) => {
           ))}
         </div>
       ))}
+        <div className={styles.sectionSeparator}></div>
         <h5 className={styles.sectionTitleRow}>Blog</h5>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (

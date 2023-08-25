@@ -98,8 +98,8 @@
   grid-column: 1 / -1;
   /* Span all columns */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
   margin-bottom: 0.5rem;
   /* Add some spacing between section title and links */
 }
@@ -118,6 +118,7 @@
 
   /* Add spacing between grid items */
   margin: 0.2rem;
+  margin-bottom: 2rem;
 }
 
 .gridItem:hover {
@@ -139,5 +140,12 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.sectionSeparator {
+  height: 1px;
+  background-color: #ccc;
+  /* Adjust the color as needed */
+  margin: 0.5rem 0;
 }
 
