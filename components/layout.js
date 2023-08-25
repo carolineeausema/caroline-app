@@ -39,7 +39,7 @@ const Layout = ({ children, home }) => {
       const scrollPosition = window.scrollY || document.documentElement.scrollTop;
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
-      const factor = scrollPosition / (windowHeight * 0.8); // Adjust this value to control the speed of fading
+      const factor = scrollPosition / (windowHeight * 0.1); // Adjust this value to control the speed of fading
       setScrollFactor(factor);
     };
 
@@ -54,7 +54,7 @@ const Layout = ({ children, home }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.menuIcon} style={{opacity: logoOpacity}} onClick={toggleMenu}>
+      <div className={styles.menuIcon} style={{}} onClick={toggleMenu}>
         <div className={styles.menuOverlay} style={{ display: isMenuOpen ? 'block' : 'none' }}>
         {
           <div className={styles.menuItems}>
