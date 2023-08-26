@@ -1,11 +1,12 @@
+import React, { useRef, useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import { FiMenu } from 'react-icons/fi';
-import { useEffect, useRef, useState } from 'react';
-
+import dynamic from 'next/dynamic';
+const DynamicSketch = dynamic(() => import('./Sketch'), { ssr: false });
 const name = 'Caroline Ausema';
 export const siteTitle = 'Ausema';
 
@@ -13,33 +14,18 @@ const Layout = ({ children, home }) => {
   const p5Canvas = useRef(null);
   const [scrollFactor, setScrollFactor] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const logoMaxWidth = 100; // Maximum width you want the logo to stretch
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   useEffect(() => {
-    // Initialize p5.js sketch when the component mounts on the client side
-    const p5 = require('p5'); // Load p5.js dynamically
-    const sketch = (p) => {
-
-      p.setup = () => {
-      };
-
-      p.draw = () => {
-      };
-    };
-
-    // Create p5.js instance
-    new p5(sketch, p5Canvas.current);
-  }, []); // Only run this effect once, on mount
-
-  useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY || document.documentElement.scrollTop;
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
 
-      const factor = scrollPosition / (windowHeight * 0.1); // Adjust this value to control the speed of fading
+      const factor = scrollPosition / (windowHeight * 0.5);
       setScrollFactor(factor);
     };
 
@@ -49,8 +35,9 @@ const Layout = ({ children, home }) => {
     };
   }, []);
 
-  const logoOpacity = 1 - scrollFactor; // Fades the logo away as the user scrolls down
-  const textColor = `rgba(0,0,0, ${1 - scrollFactor})`; // Fades from black to transparent
+  const logoOpacity = 1 - scrollFactor;
+  const textColor = `rgba(0,0,0, ${1 - scrollFactor})`;
+  const logoWidth = Math.max(50, logoMaxWidth - logoMaxWidth * scrollFactor);
 
   return (
     <div className={styles.container}>
@@ -78,20 +65,24 @@ const Layout = ({ children, home }) => {
         menu
        </div>
       {/* p5.js canvas for the horizontal line waves */}
-      <div ref={p5Canvas} style={{ position: 'fixed', top: 0, left: 0, zIndex: -1, width: '100%', height: '100vh' }} />
-
-      <div className={styles.iconlink} style={{ opacity: logoOpacity, position: 'fixed' }}>
-        <Link href='/'>
-          <Image
-          style={utilStyles.logo}
-            src="/images/icon.JPG"
-            alt=""
-            width={50}
-            height={50}
-            objectFit="contain"
-          />
-        </Link>
-      </div>
+      <div ref={p5Canvas} style={{ position: 'fixed', top: 0, left: 30, height: '100vh' }} />
+        <h1 className={`${utilStyles.titleFont}`}>
+        <div className={styles.sketchContainer} style={{ zIndex: -1 }}>
+          <DynamicSketch />
+        </div>
+        <div
+          className={utilStyles.colorInherit}
+          style={{
+            opacity: logoOpacity,
+            position: 'fixed',
+            center: `50%`,
+            transform: `translateX(-${50 * scrollFactor}%)`, // Move left as the user scrolls
+            transition: 'right 0.1s ease-in-out', // Add smooth transition
+          }}
+        >
+            Hi, there.
+        </div>
+        </h1>
       <div className={styles.header} style={{ color: textColor }}>
         {home ? (
           <>
@@ -106,11 +97,20 @@ const Layout = ({ children, home }) => {
                 height={317}
               />
             </Link>
-            <h2 className={`${utilStyles.nameFont}`}>
+            <p className={`${utilStyles.nameFont}`}>
               <Link href="/" className={utilStyles.colorInherit}>
-                {name}
+                My name is {name}.
               </Link>
-            </h2>
+            </p>
+
+            <p className={`${utilStyles.paragraphFont}`}>
+                I am a Senior Honors student at Purdue University, studying Computer Science with a focus in Security and Software Engineering. I'm also minoring in Sociology, focusing on the theoretical perspectives of Media and Technology. Some topics that interest me are Creative Coding, AI ethics, sociology (specifically crime & infrastructure), and limitless clean energy.
+            </p>
+
+
+            <p className={`${utilStyles.paragraphFont}`}>
+                Outside of school, I like drinking coffee, weightlifting, hearing live music, watching documentaries, and antique shopping (or any shopping actually whoops ☮︎).
+            </p>
           </>
         ) : (
           <>
@@ -124,11 +124,20 @@ const Layout = ({ children, home }) => {
                 height={108}
               />
             </Link>
-            <h2 className={`${utilStyles.nameFont}`}>
+            <p className={`${utilStyles.nameFont}`}>
               <Link href="/" className={utilStyles.colorInherit}>
-                {name}
+                My name is {name}.
               </Link>
-            </h2>
+            </p>
+            <p className={`${utilStyles.paragraphFont}`}>
+                I am a Senior Honors student at Purdue University, studying Computer Science with a focus in Security and Software Engineering. I'm also minoring in Sociology, focusing on the theoretical perspectives of Media and Technology.
+            </p>
+
+            <p className={`${utilStyles.paragraphFont}`}>
+                I am a Senior Honors student at Purdue University, studying Computer Science with a focus in Security and Software Engineering. I'm also minoring in Sociology, focusing on the theoretical perspectives of Media and Technology.
+            </p>
+
+            
           </>
         )}
       </div>

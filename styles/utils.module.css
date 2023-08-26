@@ -58,9 +58,27 @@
     height: 50px;
 }
 
+.titleFont {
+    text-align: left;
+    font-size: 2rem;
+}
+
+.paragraphFont {
+    text-align: left;
+    font-size: .7rem;
+}
+
 @media (max-width: 600px) {
     .nameFont {
         font-size: 1.5rem;
         /* Adjust the font size for smaller screens */
+    }
+
+    .titleFont {
+        font-size: 2rem;
+    }
+
+    .paragraphFont {
+        font-size: 1rem;
     }
 }
