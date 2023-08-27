@@ -40,7 +40,13 @@ const Layout = ({ children, home }) => {
   const logoWidth = Math.max(50, logoMaxWidth - logoMaxWidth * scrollFactor);
 
   return (
-    <div className={styles.container}>
+    
+    <div>
+
+      <div className={styles.sketchContainer} style={{ zIndex: -1 }}>
+          <DynamicSketch />
+        </div>
+      <div className={styles.container}>
       <div className={styles.menuIcon} style={{ opacity: logoOpacity }} onClick={toggleMenu}>
         <div className={styles.menuOverlay} style={{ display: isMenuOpen ? 'block' : 'none' }}>
         {
@@ -64,12 +70,9 @@ const Layout = ({ children, home }) => {
         </div>
         menu
        </div>
-      {/* p5.js canvas for the horizontal line waves */}
-      <div ref={p5Canvas} style={{ position: 'fixed', top: 0, left: 30, height: '100vh' }} />
+      <div ref={p5Canvas} style={{ position: 'fixed', top: 0, height: '100vh' }} />
         <h1 className={`${utilStyles.titleFont}`}>
-        <div className={styles.sketchContainer} style={{ zIndex: -1 }}>
-          <DynamicSketch />
-        </div>
+        
         <div
           className={utilStyles.colorInherit}
           style={{
@@ -99,7 +102,7 @@ const Layout = ({ children, home }) => {
             </Link>
             <p className={`${utilStyles.nameFont}`}>
               <Link href="/" className={utilStyles.colorInherit}>
-                My name is {name}.
+                I'm {name}.
               </Link>
             </p>
 
@@ -109,7 +112,7 @@ const Layout = ({ children, home }) => {
 
 
             <p className={`${utilStyles.paragraphFont}`}>
-                Outside of school, I like drinking coffee, weightlifting, hearing live music, watching documentaries, and antique shopping (or any shopping actually whoops ☮︎).
+                Outside of school, I like drinking coffee, weightlifting, sailing, flying, hearing live music, watching documentaries, and antique shopping (or any shopping actually whoops!).
             </p>
           </>
         ) : (
@@ -134,8 +137,7 @@ const Layout = ({ children, home }) => {
             </p>
 
             <p className={`${utilStyles.paragraphFont}`}>
-                I am a Senior Honors student at Purdue University, studying Computer Science with a focus in Security and Software Engineering. I'm also minoring in Sociology, focusing on the theoretical perspectives of Media and Technology.
-            </p>
+                Outside of school, I like drinking coffee, weightlifting, sailing, flying, hearing live music, watching documentaries, and antique shopping (or any shopping actually whoops!).</p>
 
             
           </>
@@ -147,6 +149,7 @@ const Layout = ({ children, home }) => {
           <Link href="/">← Back to home</Link>
         </div>
       )}
+      </div>
     </div>
   );
 };
