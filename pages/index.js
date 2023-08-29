@@ -14,7 +14,7 @@ const Home = ({ allPostsData }) => {
   const pages = [
     {
       text: 'Coursework',
-      href: '/resume',
+      href: '/course_history',
     },
     {
       text: 'Travel',

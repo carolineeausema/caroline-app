@@ -56,13 +56,19 @@ const Layout = ({ children, home }) => {
                 <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href="/link1">Link 1</Link>
+                <Link href="/course_history">Coursework</Link>
               </li>
               <li>
-                <Link href="/link2">Link 2</Link>
+                <Link href="/collage">Collage</Link>
               </li>
               <li>
-                <Link href="/link3">Link 3</Link>
+                <Link href="/resume">Resume</Link>
+              </li>
+              <li>
+                <Link href="">LinkedIn</Link>
+              </li>
+              <li>
+                <Link href="/resume">GitHub</Link>
               </li>
             </ul>
           </div>
