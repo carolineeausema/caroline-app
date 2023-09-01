@@ -11,18 +11,21 @@ import Date from '../components/date';
 
 const Home = ({ allPostsData }) => {
 
-  const pages = [
+  const do_not_show = [
     {
-      text: 'Coursework',
-      href: '/course_history',
-    },
-    {
-      text: 'Travel',
-      href: '/resume',
+      text: 'Music Roadmap',
+      href: '/music_map',
     },
     {
       text: 'Collage',
       href: '/resume',
+    },
+  ]
+
+  const pages = [
+    {
+      text: 'Coursework',
+      href: '/course_history',
     },
   ]
 
@@ -37,7 +40,7 @@ const Home = ({ allPostsData }) => {
     },
     {
       text: 'Github',
-      href: '/github',
+      href: 'https://github.com/carolineeausema',
     },
   ];
 
