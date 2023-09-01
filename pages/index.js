@@ -53,6 +53,10 @@ const Home = ({ allPostsData }) => {
       text: 'Mask',
       href: '/mask',
     },
+    {
+      text: 'Normal Mat Box',
+      href: '/box',
+    },
   ];
 
   const linkSections = [

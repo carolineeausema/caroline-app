@@ -59,9 +59,6 @@ const Layout = ({ children, home }) => {
                 <Link href="/course_history">Coursework</Link>
               </li>
               <li>
-                <Link href="/collage">Collage</Link>
-              </li>
-              <li>
                 <Link href="/resume">Resume</Link>
               </li>
               <li>
