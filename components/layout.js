@@ -16,6 +16,7 @@ const Layout = ({ children, home }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const logoMaxWidth = 100; // Maximum width you want the logo to stretch
 
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };

@@ -8,6 +8,7 @@ import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import { getSortedPostsData } from '../lib/posts';
 import Date from '../components/date';
+import SpotifyPlayer from '../components/spotify';
 
 const Home = ({ allPostsData }) => {
 
@@ -71,6 +72,7 @@ const Home = ({ allPostsData }) => {
       <Head>
         <title>{siteTitle}</title>
       </Head>
+      
       {linkSections.map((section, sectionIndex) => (
         <div key={sectionIndex} className={styles.gridContainer}>
           <h5 className={styles.sectionTitleRow}>{section.title}</h5>
@@ -98,6 +100,9 @@ const Home = ({ allPostsData }) => {
             </li>
           ))}
         </ul>
+      <div>
+        <SpotifyPlayer />
+      </div>
     </Layout>
   );
 };

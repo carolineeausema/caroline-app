@@ -107,9 +107,9 @@ const CoursePage = () => {
       )}
       {courseWithDescription(
         'MUS 25000',
-        'Music Appreciated',
+        'Music Appreciation',
         '3',
-        'he traditions, forms, and styles of classical music. Other types of music may be examined as well.'
+        'The traditions, forms, and styles of classical music. Other types of music may be examined as well.'
       )}
       
       <h5>Sophomore Summer (2021)</h5>
