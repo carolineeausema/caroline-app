@@ -22,7 +22,7 @@ const SpotifyPlayer = () => {
     borderRadius: '0.75rem', // Smaller border radius
     display: 'flex',
     alignItems: 'center',
-    width: '15rem', // Smaller width
+    width: '17rem', // Smaller width
     margin: '0 auto',
   };
 
