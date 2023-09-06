@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useSWR from 'swr';
 
 const SpotifyPlayer = () => {
@@ -8,13 +8,14 @@ const SpotifyPlayer = () => {
     image: 'spotify.png',
   };
 
-  const fetcher = (...args) =>
-    fetch(...args).then((res) => res.json());
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
   const { data: songData } = useSWR('/api/playing', fetcher, {
     fallbackData: fallbackSongData,
     refreshInterval: 5000,
   });
+
+  const [isHovered, setIsHovered] = useState(false); // Track hover state
 
   const containerStyle = {
     background: '#f2f2f2',
@@ -24,6 +25,7 @@ const SpotifyPlayer = () => {
     alignItems: 'center',
     width: '17rem', // Smaller width
     margin: '0 auto',
+    position: 'relative', // Add position relative
   };
 
   const imageStyle = {
@@ -45,8 +47,32 @@ const SpotifyPlayer = () => {
     fontSize: '14px', // Smaller font size for artist name
   };
 
+  const slidingTextContainerStyle = {
+    position: 'absolute',
+    display: 'block',
+    bottom: '5rem',
+    left: isHovered ? '10rem' : '0rem', // Show text on hover, hide otherwise
+    width: '100%',
+    padding: '0.5rem',
+    fontSize: '14px',
+    color: isHovered ? '#475d00' : 'white', // Text color changes on hover
+    'z-index': -1,
+    transition: 'left 0.5s ease-in-out, color 0.5s ease-in-out', // Add color transition
+  };
+
   return (
-    <div style={containerStyle}>
+    <div
+      style={containerStyle}
+      onMouseEnter={() => {
+        // Set isHovered to true on hover
+        setIsHovered(true);
+      }}
+      onMouseLeave={() => {
+        // Set isHovered to false on mouse leave
+        setIsHovered(false);
+      }}
+    >
+      <div style={slidingTextContainerStyle}>Currently Playing</div>
       <img src={songData.image} alt="Album cover" style={imageStyle} />
       <div style={textContainerStyle}>
         <p style={titleStyle}>{songData.title}</p>
