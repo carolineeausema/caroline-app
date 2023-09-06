@@ -50,13 +50,13 @@ const SpotifyPlayer = () => {
   const slidingTextContainerStyle = {
     position: 'absolute',
     display: 'block',
-    bottom: '5rem',
+    bottom: '6.5rem',
     left: isHovered ? '10rem' : '0rem', // Show text on hover, hide otherwise
     width: '100%',
     padding: '0.5rem',
     fontSize: '14px',
     color: isHovered ? '#475d00' : 'white', // Text color changes on hover
-    zIndex: -1,
+    'z-index': -1,
     transition: 'left 0.5s ease-in-out, color 0.5s ease-in-out', // Add color transition
   };
 
