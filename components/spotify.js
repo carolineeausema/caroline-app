@@ -50,7 +50,7 @@ const SpotifyPlayer = () => {
   const slidingTextContainerStyle = {
     position: 'absolute',
     display: 'block',
-    bottom: '6.5rem',
+    bottom: '5.5rem',
     left: isHovered ? '10rem' : '0rem', // Show text on hover, hide otherwise
     width: '100%',
     padding: '0.5rem',
