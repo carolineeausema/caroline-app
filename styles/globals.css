@@ -2,16 +2,11 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.6;
+  font-size: 18px;
   background-color: rgb(255, 255, 255);
-  display: flex;
-  justify-content: center;
-  /* Center horizontally */
-  align-items: center;
-  /* Center vertically */
-  min-height: 100vh;
-  /* Ensure the entire viewport height is covered */
 }
 
 * {
@@ -35,23 +30,4 @@ img {
 h1 {
   font-size: 42px;
   font-weight: 50;
-}
-
-/* Media Query for Small Screens (up to 768px) */
-@media screen and (max-width: 768px) {
-  body {
-    font-size: 16px;
-    /* Adjust the font size for small screens */
-  }
-
-  h1 {
-    font-size: 32px;
-    /* Adjust the h1 font size for small screens */
-    text-align: center;
-    /* Center the text horizontally on small screens */
-  }
-
-  p {
-    font-size: 13px;
-  }
 }

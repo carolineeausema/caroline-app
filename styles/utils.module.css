@@ -88,15 +88,10 @@
     }
 
     .container {
-        margin-left: 4rem;
-        font-size: 12px;
+        margin: 1rem;
     }
 
-    .words {
-        font-size: 12px;
-    }
-
-    .listItem {
+    .lightText {
         font-size: 12px;
     }
 }
