@@ -19,13 +19,15 @@ const SpotifyPlayer = () => {
 
   const containerStyle = {
     background: '#f2f2f2',
-    padding: '0.75rem', // Smaller padding for the entire container
-    borderRadius: '0.75rem', // Smaller border radius
+    padding: '0.75rem',
+    borderRadius: '0.75rem',
     display: 'flex',
     alignItems: 'center',
-    width: '17rem', // Smaller width
+    width: '18rem',
     margin: '0 auto',
-    position: 'relative', // Add position relative
+    position: 'relative',
+    whiteSpace: 'nowrap', // Prevent text from wrapping to a new line
+    textOverflow: 'ellipsis', // Show ellipsis for overflowing text
   };
 
   const imageStyle = {
@@ -51,7 +53,7 @@ const SpotifyPlayer = () => {
     position: 'absolute',
     display: 'block',
     bottom: '5.5rem',
-    left: isHovered ? '10rem' : '0rem', // Show text on hover, hide otherwise
+    left: isHovered ? '11rem' : '0rem', // Show text on hover, hide otherwise
     width: '100%',
     padding: '0.5rem',
     fontSize: '14px',

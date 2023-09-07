@@ -6,7 +6,7 @@ import utilStyles from '../../styles/utils.module.css'
 
 export default function Post({ postData }) {
   return (
-    <div className={utilStyles.container}>
+    <div className={`${utilStyles.container} ${utilStyles.postContainer}`} style={{ margin: '8rem' }}>
       <Head>
         <title>{postData.title}</title>
       </Head>
@@ -20,6 +20,7 @@ export default function Post({ postData }) {
     </div>
   )
 }
+
 
 export async function getStaticPaths() {
   const paths = getAllPostIds()
