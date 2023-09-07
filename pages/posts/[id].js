@@ -6,7 +6,7 @@ import utilStyles from '../../styles/utils.module.css'
 
 export default function Post({ postData }) {
   return (
-    <div style={{ margin: "5rem"}}>
+    <div className={utilStyles.container}>
       <Head>
         <title>{postData.title}</title>
       </Head>
@@ -15,7 +15,7 @@ export default function Post({ postData }) {
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+        <div className={utilStyles.words} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </div>
   )

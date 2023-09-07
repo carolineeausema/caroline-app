@@ -75,10 +75,28 @@
     }
 
     .titleFont {
-        font-size: 2rem;
+        font-size: 1rem;
     }
 
     .paragraphFont {
+        text-align: center;
+        font-size: .5rem;
+    }
+
+    .nameFont {
         font-size: 1rem;
+    }
+
+    .container {
+        margin-left: 4rem;
+        font-size: 12px;
+    }
+
+    .words {
+        font-size: 12px;
+    }
+
+    .listItem {
+        font-size: 12px;
     }
 }
