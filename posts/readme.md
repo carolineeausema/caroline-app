@@ -3,8 +3,6 @@ title: 'ReadMe'
 date: '2023-09-06'
 ---
 
-# Hi.
-
 [This](https://github.com/carolineeausema/carolines-app) is the repository for my personal website. You can visit the live site [here](https://carolineausema.vercel.app/).
 
 ## About
