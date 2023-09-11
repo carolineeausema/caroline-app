@@ -247,7 +247,9 @@ const CoursePage = () => {
       <h5>Senior Summer (2023)</h5>
       {courseWithDescription(
         'SA 11003',
-        'Global Egypt'
+        'Global Egypt',
+        '6',
+        'Honors College Maymester Study Abroad to Egypt. Three weeks of observing thousands of years of engineering, tracing ongoing legacies of imperialism, and experiencing globalization from the perspective of the Global South.'
       )}
     </div>
   );
