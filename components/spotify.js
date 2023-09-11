@@ -53,7 +53,7 @@ const SpotifyPlayer = () => {
     position: 'absolute',
     display: 'block',
     bottom: '5.5rem',
-    left: isHovered ? '11rem' : '0rem', // Show text on hover, hide otherwise
+    left: isHovered ? '5rem' : '0rem', // Show text on hover, hide otherwise
     width: '100%',
     padding: '0.5rem',
     fontSize: '14px',
@@ -74,7 +74,7 @@ const SpotifyPlayer = () => {
         setIsHovered(false);
       }}
     >
-      <div style={slidingTextContainerStyle}>Currently Playing</div>
+      <div style={slidingTextContainerStyle}>Currently Playing (on my Spotify ☺︎)</div>
       <img src={songData.image} alt="Album cover" style={imageStyle} />
       <div style={textContainerStyle}>
         <p style={titleStyle}>{songData.title}</p>

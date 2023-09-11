@@ -38,8 +38,9 @@ const SketchPage = () => {
         <div style={{ position: 'relative' }}>
             <div
                 ref={wrapperRef}
-                style={{ position: 'absolute', top: -50, left: -50, zIndex: 1 }}
+                style={{ position: 'absolute', top: 15, left: -50, zIndex: 1 }}
             ></div>
+            <p style={{ fontSize: '9px' }}>** this is kinda like a digital lava lamp. it's really cool to leave it be & glance back at it every so often. wiggle your mouse around for some variety ★</p>
         </div>
     );
 };

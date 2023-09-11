@@ -25,15 +25,21 @@ This whole project started as the idea of a portfolio. Since then, I've added so
 
 - Home
     - Scroll + Fade top elements with p5
+    - p5 Geometric Hover background
     - Grid Selection
     - Currently Playing Song on Spotify
-- Coursework
+        - Hover text Scroll + Fade
+- Expandable Coursework
 - Art Sketches
-    - p5 doodles
+    - My Stomach Lining: we're all a little gluten intolerant
+    - Mask: made with TensorFlow Facial Recognition
+    - Normal Material Box: experimenting with [normalMaterial()](https://p5js.org/reference/#/p5/normalMaterial) p5 function
 
 ## Credits
 
 I use the internet a ton for help. Here are some of the things that really helped me out:
 - [Next.js Tutorial](https://nextjs.org/learn/basics/create-nextjs-app)
+- [p5 Documentation](https://p5js.org/)
+- [p5/Next.js Integration](https://dev.to/christiankastner/integrating-p5-js-with-react-i0d)
 
 
