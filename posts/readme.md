@@ -3,7 +3,7 @@ title: 'ReadMe'
 date: '2023-09-06'
 ---
 
-![](https://github.com/carolineeausema/carolines-app/blob/e91698ac29cf0daab3719315c453f0747e13a63d/public/images/readme.jpeg?raw=true)
+![](https://github.com/carolineeausema/carolines-app/blob/138d9f86832c7a4355f0e43adec6e9b18af10824/public/images/readme.jpeg?raw=true)
 
 [This](https://github.com/carolineeausema/carolines-app) is the repository for my personal website. You can visit the live site [here](https://carolineausema.vercel.app/).
 
