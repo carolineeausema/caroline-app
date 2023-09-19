@@ -50,10 +50,10 @@ export default function App({ Component, pageProps }) {
                 <Link href="/resume">Resume</Link>
               </li>
               <li>
-                <Link href="">LinkedIn</Link>
+                <Link href="https://www.linkedin.com/in/caroline-ausema/">LinkedIn</Link>
               </li>
               <li>
-                <Link href="/resume">GitHub</Link>
+                <Link href="https://github.com/carolineeausema">GitHub</Link>
               </li>
             </ul>
           </div>
