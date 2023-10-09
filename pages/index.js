@@ -58,6 +58,10 @@ const Home = ({ allPostsData }) => {
       text: 'Normal Mat Box',
       href: '/box',
     },
+    {
+      text: 'Strech Webcam Pixels',
+      href: '/stretch_pixels',
+    },
   ];
 
   const linkSections = [
