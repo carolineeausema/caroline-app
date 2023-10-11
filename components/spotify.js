@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useSWR from 'swr';
+import ColorThief from 'colorthief';
 
 const SpotifyPlayer = () => {
   const fallbackSongData = {
@@ -16,22 +17,63 @@ const SpotifyPlayer = () => {
   });
 
   const [isHovered, setIsHovered] = useState(false); // Track hover state
+  const [auraColor, setAuraColor] = useState('#f2f2f2'); // Default aura color
+
+  useEffect(() => {
+    // Analyze the colors from the album cover image
+    if (songData.image) {
+      analyzeImageColors(songData.image);
+    }
+  }, [songData.image]);
+
+  const analyzeImageColors = (imageUrl) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+
+    img.onload = () => {
+      const colorThief = new ColorThief();
+      const prominentColor = colorThief.getPalette(img, 3);
+      if (prominentColor.length > 0) {
+        const auraColor = `rgb(${prominentColor[0][0]}, ${prominentColor[0][1]}, ${prominentColor[0][2]})`;
+        setAuraColor(auraColor);
+      }
+    };
+
+    img.src = imageUrl;
+  };
+
+  useEffect(() => {
+    if (auraColor) {
+      // Change the background color of the body based on auraColor
+      document.body.style.background = `linear-gradient(to top, ${auraColor}, white 25%)`;
+    }
+  }, [auraColor]);
 
   const containerStyle = {
-    background: '#f2f2f2',
+    background: '#f2f2f2', // Set the container background to transparent
     padding: '0.75rem',
     borderRadius: '0.75rem',
     display: 'flex',
     alignItems: 'center',
-    maxWidth: '18rem', // Set a maximum width
+    maxWidth: '18rem',
     margin: '0 auto',
     position: 'relative',
-    overflow: 'hidden', // Hide overflow content
+    overflow: 'hidden',
+  };
+
+  const auraStyle = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'transparent', // Set the aura background to transparent
+    opacity: 0.5,
   };
 
   const imageStyle = {
-    maxWidth: '70px', // Smaller image width
-    marginRight: '10px', // Smaller spacing between image and text
+    maxWidth: '70px',
+    marginRight: '10px',
   };
 
   const textContainerStyle = {
@@ -39,47 +81,44 @@ const SpotifyPlayer = () => {
   };
 
   const titleStyle = {
-    fontSize: '16px', // Smaller font size for the title
-    marginBottom: '-15px', // Reduced space below the title
+    fontSize: '16px',
+    marginBottom: '-15px',
     whiteSpace: 'nowrap',
-    flex: '1',
     overflow: 'hidden',
-    textOverflow: 'ellipsis', // Truncate text with ellipsis if it overflows
+    textOverflow: 'ellipsis',
   };
 
   const artistStyle = {
     color: '#888',
-    fontSize: '14px', // Smaller font size for artist name
+    fontSize: '14px',
     overflow: 'hidden',
-    textOverflow: 'ellipsis', // Truncate text with ellipsis if it overflows
+    textOverflow: 'ellipsis',
   };
 
   const slidingTextContainerStyle = {
     position: 'absolute',
     display: 'block',
-    bottom: '5.1rem',
-    left: isHovered ? '38%' : '0', // Show text on hover, hide otherwise
+    bottom: '4.1rem',
+    left: isHovered ? '33%' : '0',
     width: '100%',
-    padding: '0.5rem',
-    fontSize: '14px',
-    color: isHovered ? '#475d00' : 'white', // Text color changes on hover
-    zIndex: 1, // Bring it above other content
+    padding: '1.8rem',
+    fontSize: '7px',
+    color: isHovered ? 'white' : 'transparent',
+    zIndex: -1,
     transition: 'left 0.5s ease-in-out, color 0.5s ease-in-out',
   };
 
   return (
     <div>
-      <div style={slidingTextContainerStyle}>Currently Playing (on my Spotify ☺︎)</div>
-      <div
-        style={containerStyle}
-        onMouseEnter={() => {
-          setIsHovered(true);
-        }}
-        onMouseLeave={() => {
-          setIsHovered(false);
-        }}
-      >
-        
+      <div style={slidingTextContainerStyle}>
+          *************background color changes depending on album art ;)</div>
+      <div style={slidingTextContainerStyle}>
+        <div style={{ fontSize: '14px', padding: '.4rem' }}>
+          Currently Playing (on my Spotify ☺︎)
+        </div>
+      </div> 
+      <div style={containerStyle} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+        <div style={auraStyle}></div>
         <img src={songData.image} alt="Album cover" style={imageStyle} />
         <div style={textContainerStyle}>
           <p style={titleStyle} title={songData.title}>

@@ -8,6 +8,7 @@
   "dependencies": {
     "@tensorflow-models/blazeface": "^0.1.0",
     "@tensorflow/tfjs": "^4.10.0",
+    "colorthief": "^2.4.0",
     "date-fns": "^2.29.3",
     "face-api.js": "^0.22.2",
     "gray-matter": "^4.0.3",
@@ -21,7 +22,8 @@
     "remark": "^14.0.2",
     "remark-html": "^15.0.2",
     "spotify-web-api-node": "^5.0.2",
-    "swr": "^2.2.2"
+    "swr": "^2.2.2",
+    "vibrant": "^0.0.1"
   },
   "devDependencies": {
     "@types/react": "18.2.21",

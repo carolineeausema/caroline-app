@@ -28,11 +28,13 @@ This whole project started as the idea of a portfolio. Since then, I've added so
     - Grid Selection
     - Currently Playing Song on Spotify
         - Hover text Scroll + Fade
+        - Aura color thing using Color Thief
 - Expandable Coursework
 - Art Sketches
     - My Stomach Lining: we're all a little gluten intolerant
     - Mask: made with TensorFlow Facial Recognition
     - Normal Material Box: experimenting with [normalMaterial()](https://p5js.org/reference/#/p5/normalMaterial) p5 function
+    - Stretch Pixels: based on my final project in Art Appreciation
 
 ## Credits
 
