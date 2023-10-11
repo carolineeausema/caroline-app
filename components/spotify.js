@@ -34,7 +34,7 @@ const SpotifyPlayer = () => {
       const colorThief = new ColorThief();
       const prominentColor = colorThief.getPalette(img, 3);
       if (prominentColor.length > 0) {
-        const auraColor = `rgb(${prominentColor[0][0]}, ${prominentColor[0][1]}, ${prominentColor[0][2]})`;
+        const auraColor = `rgb(${prominentColor[1][0]}, ${prominentColor[1][1]}, ${prominentColor[1][2]})`;
         setAuraColor(auraColor);
       }
     };
