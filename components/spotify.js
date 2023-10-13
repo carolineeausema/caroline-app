@@ -17,7 +17,8 @@ const SpotifyPlayer = () => {
   });
 
   const [isHovered, setIsHovered] = useState(false); // Track hover state
-  const [auraColor, setAuraColor] = useState('#f2f2f2'); // Default aura color
+  const [auraColor1, setAura1Color] = useState('#f2f2f2'); // Default aura1 color
+  const [auraColor2, setAura2Color] = useState('#ffffff'); // Default aura2 color (lighter)
 
   useEffect(() => {
     // Analyze the colors from the album cover image
@@ -33,21 +34,44 @@ const SpotifyPlayer = () => {
     img.onload = () => {
       const colorThief = new ColorThief();
       const prominentColor = colorThief.getPalette(img, 3);
-      if (prominentColor.length > 0) {
-        const auraColor = `rgb(${prominentColor[1][0]}, ${prominentColor[1][1]}, ${prominentColor[1][2]})`;
-        setAuraColor(auraColor);
+      if (prominentColor.length > 1) {
+        const color1 = `rgb(${prominentColor[1][0]}, ${prominentColor[1][1]}, ${prominentColor[1][2]})`;
+        const color2 = `rgb(${prominentColor[0][0]}, ${prominentColor[0][1]}, ${prominentColor[0][2]})`;
+
+        if (isLighter(color2, color1)) {
+          setAura1Color(color1);
+          setAura2Color(color2);
+        } else {
+          setAura1Color(color2);
+          setAura2Color(color1);
+        }
       }
     };
 
     img.src = imageUrl;
   };
 
+  const isLighter = (color1, color2) => {
+    // Calculate the luminance of a color (higher value means lighter)
+    const calculateLuminance = (color) => {
+      const rgb = color.match(/\d+/g);
+      return (
+        0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]
+      );
+    };
+
+    return calculateLuminance(color1) > calculateLuminance(color2);
+  };
+
   useEffect(() => {
-    if (auraColor) {
-      // Change the background color of the body based on auraColor
-      document.body.style.background = `linear-gradient(to top, ${auraColor}, white 25%)`;
-    }
-  }, [auraColor]);
+  if (auraColor1 && window.location.pathname === 'carolineausema.vercel.app') {
+    // Change the background color of the body based on auraColor
+    document.body.style.background = `radial-gradient(circle at bottom, ${auraColor1}, ${auraColor2}, white 35%)`;
+  } else {
+    // Reset the background to the default color
+    document.body.style.background = 'white'; // Change this to your default background color
+  }
+}, [auraColor1, auraColor2]);
 
   const containerStyle = {
     background: '#f2f2f2', // Set the container background to transparent
@@ -98,10 +122,10 @@ const SpotifyPlayer = () => {
   const slidingTextContainerStyle = {
     position: 'absolute',
     display: 'block',
-    bottom: '4.1rem',
+    bottom: '4.1rem', // Adjusted spacing at the bottom
     left: isHovered ? '33%' : '0',
     width: '100%',
-    padding: '1.8rem',
+    padding: '1.8rem', // Adjusted padding
     fontSize: '7px',
     color: isHovered ? 'white' : 'transparent',
     zIndex: -1,
@@ -110,8 +134,6 @@ const SpotifyPlayer = () => {
 
   return (
     <div>
-      <div style={slidingTextContainerStyle}>
-          *************background color changes depending on album art ;)</div>
       <div style={slidingTextContainerStyle}>
         <div style={{ fontSize: '14px', padding: '.4rem' }}>
           Currently Playing (on my Spotify ☺︎)
