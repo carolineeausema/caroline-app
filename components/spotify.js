@@ -64,9 +64,12 @@ const SpotifyPlayer = () => {
   };
 
   useEffect(() => {
-    if (auraColor1) {
+    if (auraColor1 && auraColor2) {
       // Change the background color of the body based on auraColor
       document.body.style.background = `radial-gradient(circle at bottom, ${auraColor1}, ${auraColor2}, white 35%)`;
+    }
+    if (songData.title === 'Not playing') {
+      document.body.style.background = "white";
     }
   }, [auraColor1, auraColor2]);
 
