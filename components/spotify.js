@@ -112,6 +112,7 @@ const SpotifyPlayer = () => {
   const artistStyle = {
     color: '#888',
     fontSize: '14px',
+    whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
   };
@@ -132,9 +133,11 @@ const SpotifyPlayer = () => {
   return (
     <div>
       <div style={slidingTextContainerStyle}>
-        <div style={{ fontSize: '14px', padding: '.4rem' }}>
+        <div style={{ fontSize: '14px', padding: '.07rem' }}>
           Currently Playing (on my Spotify ☺︎)
         </div>
+        <div>
+          *************background color changes depending on album art ;)</div>
       </div> 
       <div style={containerStyle} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         <div style={auraStyle}></div>
