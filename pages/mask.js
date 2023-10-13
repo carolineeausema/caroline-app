@@ -80,7 +80,7 @@ const FaceRecognition = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{ 'background-color': 'white'}}>
       {/* Hide the video element with CSS */}
       <video id="video" autoPlay playsInline style={{ display: 'none' }}></video>
       {/* Use a separate canvas for face detection */}

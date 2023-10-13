@@ -64,14 +64,11 @@ const SpotifyPlayer = () => {
   };
 
   useEffect(() => {
-  if (auraColor1 && window.location.pathname === 'carolineausema.vercel.app') {
-    // Change the background color of the body based on auraColor
-    document.body.style.background = `radial-gradient(circle at bottom, ${auraColor1}, ${auraColor2}, white 35%)`;
-  } else {
-    // Reset the background to the default color
-    document.body.style.background = 'white'; // Change this to your default background color
-  }
-}, [auraColor1, auraColor2]);
+    if (auraColor1) {
+      // Change the background color of the body based on auraColor
+      document.body.style.background = `radial-gradient(circle at bottom, ${auraColor1}, ${auraColor2}, white 35%)`;
+    }
+  }, [auraColor1, auraColor2]);
 
   const containerStyle = {
     background: '#f2f2f2', // Set the container background to transparent

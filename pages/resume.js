@@ -29,7 +29,7 @@ export default function Resume() {
   }, []);
 
   return (
-    <div className={styles.container} style={{ padding: '10 100rem' }}>
+    <div className={styles.container} style={{ padding: '10 100rem', 'background-color': 'white' }}>
       <div style={{
         width: '100%',
         height: '100vh',

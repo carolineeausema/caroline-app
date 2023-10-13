@@ -35,7 +35,7 @@ const SketchPage = () => {
     }, []);
 
     return (
-        <div style={{ position: 'relative' }}>
+        <div style={{ position: 'relative', 'bakcground-color': 'white' }}>
             <div
                 ref={wrapperRef}
                 style={{ position: 'absolute', top: 15, left: -50, zIndex: 1 }}
