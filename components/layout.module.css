@@ -31,16 +31,22 @@
 .menuOverlay {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 0%;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent background color */
-    display: none;
-    /* Initially hidden */
-    z-index: 9999;
-    /* Make sure it's above other content */
+    background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+    display: none; /* Initially hidden */
+    z-index: 9998; /* Make sure it's below the menu */
+    transition: background-color 0.3s ease; /* Smooth transition for fading */
 }
+
+.menuOverlay.visible {
+
+    transition: background-color 0.3s ease;
+        /* Smooth transition for fading */
+    display: block; /* Show overlay when the menu is open */
+}
+
 /* layout.module.css */
 .container {
     /* ... (other styles) */
@@ -61,12 +67,13 @@
 .menuItems {
     position: absolute;
     top: 60px;
-    right: 0;
+    right: 2%;
     /* Align the menu items to the right side */
-    background-color: #fff;
+    background-color: rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     padding: 10px;
     z-index: 1000;
+    transition: background-color 0.2s;
 }
 
 .menuItems ul {
@@ -85,12 +92,13 @@
     font-size: 16px;
     /* Font size for menu items */
     display: block;
+    color: rgba(200, 200, 200, 0.8);
     transition: color 0.2s;
     /* Smooth color transition on hover */
 }
 
 .menuItems a:hover {
-    color: #007bff;
+    color: rgba(0, 0, 0, 0.1);
     /* Change color on hover */
 }
 
@@ -100,7 +108,7 @@
   padding: 10px;
   margin-bottom: 10px;
   background-color: #f5f5f5;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .courseButton {

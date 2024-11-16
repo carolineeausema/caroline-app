@@ -66,10 +66,15 @@ const Home = ({ allPostsData }) => {
     },
   ];
 
-  const linkSections = [
+  // Content sections (excluding the Links section)
+  const contentSections = [
     { title: 'Content', links: pages },
-    { title: 'More Lil Art Sketches', links: art }, // Use the 'links' array for the second link section
-    { title: 'Links', links: prof }, // Use the 'prof' array for the first link section
+    { title: 'More Lil Art Sketches', links: art }, // Art section
+  ];
+
+  // Links section
+  const linkSections = [
+    { title: 'Links', links: prof }, // Links section (moved to bottom)
   ];
 
   return (
@@ -79,8 +84,8 @@ const Home = ({ allPostsData }) => {
         <title>{siteTitle}</title>
       </Head>
 
-      {/* Map through link sections */}
-      {linkSections.map((section, sectionIndex) => (
+      {/* Map through content sections (excluding Links) */}
+      {contentSections.map((section, sectionIndex) => (
         <div key={sectionIndex} className={styles.gridContainer}>
           <h5 className={styles.sectionTitleRow}>{section.title}</h5>
           {section.links.map((link, index) => (
@@ -111,14 +116,27 @@ const Home = ({ allPostsData }) => {
         <SpotifyPlayer />
       </div>
 
-
-
       {/* Adding a GIF after the Content section */}
       <div className={styles.gifContainer}>
         <img src="/images/ascii_web_gif.gif" alt="Creative coding showcase" className={styles.gif} />
       </div>
 
-      
+{/* Map through linkSections (Links section) */}
+{linkSections.map((section, sectionIndex) => (
+  <div key={sectionIndex} className={styles.gridContainer}>
+    <h5 className={styles.sectionTitleRow}>{section.title}</h5>
+    {section.links.map((link, index) => (
+      <Link href={link.href} key={index}>
+        <div className={styles.gridItem} style={{ backgroundColor: '#f5f5f5' }}> {/* Match the background color */}
+          <div className={styles.gridText}>
+            <h3 className={utilStyles.headingMd}>{link.text}</h3>
+          </div>
+        </div>
+      </Link>
+    ))}
+  </div>
+))}
+
     </Layout>
   );
 };

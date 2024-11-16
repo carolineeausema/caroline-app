@@ -87,7 +87,7 @@ const Layout = ({ children, home }) => {
             transition: 'right 0.1s ease-in-out', // Add smooth transition
           }}
         >
-            Hi, there.
+            CRLN ASMA
         </div>
         </h1>
       <div className={styles.header} style={{ color: textColor }}>
@@ -106,14 +106,12 @@ const Layout = ({ children, home }) => {
             </Link>
             <p className={`${utilStyles.nameFont}`}>
               <Link href="/" className={utilStyles.colorInherit}>
-                I'm {name}.
+                hiiii
               </Link>
             </p>
 
             <p className={`${utilStyles.paragraphFont}`}>
-                Thanks for stopping by ☺︎ I am a Senior Honors student at Purdue University, studying Computer Science with a focus in Security and Software Engineering. I'm also minoring in Sociology, focusing on the theoretical perspectives of Media and Technology. Some topics that interest me are creative coding, AI ethics, social networks + cultural sociology (specifically crime & infrastructure), and limitless clean energy.
-                Outside of school, I like drinking coffee, weightlifting, sailing, flying, hearing live music, watching documentaries, and antique shopping (or any shopping actually whoops!).
-                Anyways welcome! Enjoy my lil portfolio website. Let me know what you think. ❊
+                Creative Engineer + Global Citizen + Gym Rat + Amateur Pilot + Artist + Hobby Music Critic
             </p>
           </>
         ) : (
@@ -134,11 +132,8 @@ const Layout = ({ children, home }) => {
               </Link>
             </p>
             <p className={`${utilStyles.paragraphFont}`}>
-                I am a Senior Honors student at Purdue University, studying Computer Science with a focus in Security and Software Engineering. I'm also minoring in Sociology, focusing on the theoretical perspectives of Media and Technology.
+                Creative Engineer + Global Citizen + Gym Rat + Amateur Pilot + Artist + Hobby Music Critic
             </p>
-
-            <p className={`${utilStyles.paragraphFont}`}>
-                Outside of school, I like drinking coffee, weightlifting, sailing, flying, hearing live music, watching documentaries, and antique shopping (or any shopping actually whoops!).</p>
 
             
           </>
