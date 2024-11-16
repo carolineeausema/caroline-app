@@ -60,6 +60,10 @@ const Home = ({ allPostsData }) => {
       text: 'Stretch Webcam Pixels',
       href: '/stretch_pixels',
     },
+    {
+      text: 'Color Webcam Pixels',
+      href: '/color_pixels',
+    },
   ];
 
   // Content sections (excluding the Links section)
