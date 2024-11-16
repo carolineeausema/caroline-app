@@ -53,10 +53,6 @@ const Home = ({ allPostsData }) => {
       href: '/mystomachlining',
     },
     {
-      text: 'Mask',
-      href: '/mask',
-    },
-    {
       text: 'Normal Mat Box',
       href: '/box',
     },
