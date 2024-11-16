@@ -11,9 +11,11 @@
     "colorthief": "^2.4.0",
     "date-fns": "^2.29.3",
     "face-api.js": "^0.20.0",
+    "formidable": "^2.0.1" ,
     "gray-matter": "^4.0.3",
     "next": "latest",
     "p5": "^1.7.0",
+    "@p5-wrapper/react": "^4.1.2",
     "react": "^18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
@@ -24,6 +26,7 @@
     "remark-html": "^15.0.2",
     "spotify-web-api-node": "^5.0.2",
     "swr": "^2.2.2",
+    "superagent": "^9.0.0", 
     "vibrant": "^0.0.1"
   },
   "devDependencies": {
