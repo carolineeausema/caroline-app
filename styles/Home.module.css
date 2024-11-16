@@ -150,3 +150,25 @@
 .titleFont {
   text-align: left;
 }
+
+/* styles/Home.module.css */
+
+.sectionSeparator {
+  margin: 20px 0;
+  border-top: 1px solid #ddd;
+}
+
+/* Container to center the GIF */
+.gifContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+/* Styling for the GIF itself */
+.gif {
+  width: 1200%;
+  max-width: 1000px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

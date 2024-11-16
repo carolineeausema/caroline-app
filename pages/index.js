@@ -1,5 +1,3 @@
-// pages/index.js
-
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
@@ -27,6 +25,10 @@ const Home = ({ allPostsData }) => {
     {
       text: 'Coursework',
       href: '/course_history',
+    },
+    {
+      text: 'WA/VASH',
+      href: '/wavash',
     },
   ]
 
@@ -59,7 +61,7 @@ const Home = ({ allPostsData }) => {
       href: '/box',
     },
     {
-      text: 'Strech Webcam Pixels',
+      text: 'Stretch Webcam Pixels',
       href: '/stretch_pixels',
     },
   ];
@@ -76,7 +78,8 @@ const Home = ({ allPostsData }) => {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      
+
+      {/* Map through link sections */}
       {linkSections.map((section, sectionIndex) => (
         <div key={sectionIndex} className={styles.gridContainer}>
           <h5 className={styles.sectionTitleRow}>{section.title}</h5>
@@ -91,20 +94,31 @@ const Home = ({ allPostsData }) => {
           ))}
         </div>
       ))}
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>{title}</Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
-        </ul>
+
+      <ul className={utilStyles.list}>
+        {allPostsData.map(({ id, date, title }) => (
+          <li className={utilStyles.listItem} key={id}>
+            <Link href={`/posts/${id}`}>{title}</Link>
+            <br />
+            <small className={utilStyles.lightText}>
+              <Date dateString={date} />
+            </small>
+          </li>
+        ))}
+      </ul>
+
       <div>
         <SpotifyPlayer />
       </div>
+
+
+
+      {/* Adding a GIF after the Content section */}
+      <div className={styles.gifContainer}>
+        <img src="/images/ascii_web_gif.gif" alt="Creative coding showcase" className={styles.gif} />
+      </div>
+
+      
     </Layout>
   );
 };
