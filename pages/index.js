@@ -53,15 +53,15 @@ const Home = ({ allPostsData }) => {
       href: '/mystomachlining',
     },
     {
-      text: 'Normal Mat Box',
+      text: 'Digital Lava Lamp',
       href: '/box',
     },
     {
-      text: 'Stretch Webcam Pixels',
+      text: 'Overwhelmed in Chicago',
       href: '/stretch_pixels',
     },
     {
-      text: 'Color Webcam Pixels',
+      text: 'Whimsical Hidden Pixels',
       href: '/color_pixels',
     },
   ];
