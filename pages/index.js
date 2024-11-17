@@ -57,11 +57,11 @@ const Home = ({ allPostsData }) => {
       href: '/box',
     },
     {
-      text: 'Overwhelmed in Chicago',
+      text: 'Overwhelmed Downtown',
       href: '/stretch_pixels',
     },
     {
-      text: 'Whimsical Hidden Pixels',
+      text: 'Hidden Pixel Investigation',
       href: '/color_pixels',
     },
   ];
