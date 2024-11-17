@@ -111,7 +111,7 @@ const Layout = ({ children, home }) => {
             </p>
 
             <p className={`${utilStyles.paragraphFont}`}>
-                Creative Engineer + Global Citizen + Gym Rat + Amateur Pilot + Artist + Hobby Music Critic
+                Creative Engineer + Global Citizen + Gym Rat + Amateur Pilot + Artist + Hobby Music Critic + Cool Aunt
             </p>
           </>
         ) : (
@@ -132,7 +132,7 @@ const Layout = ({ children, home }) => {
               </Link>
             </p>
             <p className={`${utilStyles.paragraphFont}`}>
-                Creative Engineer + Global Citizen + Gym Rat + Amateur Pilot + Artist + Hobby Music Critic
+                Creative Engineer + Global Citizen + Gym Rat + Amateur Pilot + Artist + Hobby Music Critic + Cool Aunt
             </p>
 
             
