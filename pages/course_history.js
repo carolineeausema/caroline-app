@@ -40,7 +40,7 @@ const CoursePage = () => {
   return (
     <div style={{ maxWidth: '42rem', padding: '0 1rem', margin: '.5rem auto 1rem' }}>
         <h2>Coursework</h2>
-      <h7 style={{ 'font-size': '12px' }}>Courses I've taken as a CS student at Purdue University (with a Sociology minor).</h7>
+      <h7 style={{ 'font-size': '12px' }}>Courses I took at Purdue University.</h7>
 
       <h5>Freshman Fall (2020)</h5>
       {courseWithDescription(
@@ -251,6 +251,66 @@ const CoursePage = () => {
         '6',
         'Honors College Maymester Study Abroad to Egypt. Three weeks of observing thousands of years of engineering, tracing ongoing legacies of imperialism, and experiencing globalization from the perspective of the Global South.'
       )}
+
+      <h5>Senior Fall (2023)</h5>
+        {courseWithDescription(
+        'CGT 49100',
+        'Creative Coding',
+        '3',
+        'Independent study with Dr. Esteban Garcia-Bravo.'
+        )}
+        {courseWithDescription(
+        'CS 42600',
+        'Computer Security',
+        '3'
+        )}
+        {courseWithDescription(
+        'EAPS 11200',
+        'Earth Through Time',
+        '3'
+        )}
+        {courseWithDescription(
+        'HONR 29900',
+        'Print Bay Immersive',
+        '1',
+        )}
+        {courseWithDescription(
+        'HONR 31400',
+        'Human Epoch: Community & Infrastructure',
+        '3',
+        )}
+        {courseWithDescription(
+        'PES 11600',
+        'Golf',
+        '1',
+        )}
+        {courseWithDescription(
+        'SOC 42600',
+        'Social Deviance & Control',
+        '3',
+        )}
+
+        <h5>Senior Spring (2024)</h5>
+        {courseWithDescription(
+        'CS 34800',
+        'Information Systems',
+        '3',
+        )}
+        {courseWithDescription(
+        'CSR 34200',
+        'Personal Finance',
+        '3',
+        )}
+        {courseWithDescription(
+        'PHIL 49000',
+        'Philosophy of Articial Intelligence',
+        '3',
+        )}
+        {courseWithDescription(
+        'SOC 45000',
+        'Gender Roles in Modern Society',
+        '3',
+        )}
     </div>
   );
 };
