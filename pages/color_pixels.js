@@ -9,8 +9,10 @@ const P5Sketch = () => {
             const canvasParentRef = wrapperRef.current;
             const sketchFunction = (p) => {
                 const Scale = 15;
-                const radius = 60; // Radius around the cursor for color change
-                const cursorScale = 1; // Increase the cursor's scale by this factor
+                const radius = 70; // Radius around the cursor for color change
+                const minScale = 1; // Minimum pixel scale when close to the cursor
+                const maxScale = 20;
+
 
                 p.setup = () => {
                     p.createCanvas(800, 600).parent(canvasParentRef);
@@ -47,6 +49,7 @@ const P5Sketch = () => {
 
                             // Check if the pixel is within the radius around the cursor
                             const distToCursor = p.dist(X * Scale, Y * Scale, p.mouseX, p.mouseY);
+                            const pixelScale = p.map(distToCursor, 0, radius, minScale, maxScale, true);
 
                             if (distToCursor < radius) {
                                 // Modify the color based on mouse position if inside the radius
@@ -62,8 +65,8 @@ const P5Sketch = () => {
                             const posX = X * Scale;
                             const posY = Y * Scale;
 
-                            // Draw a larger rectangle at each pixel location (cursorScale increases the "cursor size")
-                            p.rect(posX, posY, Scale * cursorScale, Scale * cursorScale);
+                            
+                            p.rect(posX, posY, pixelScale, pixelScale);
                         }
                     }
                 };
