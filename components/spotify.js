@@ -16,12 +16,11 @@ const SpotifyPlayer = () => {
     refreshInterval: 5000,
   });
 
-  const [isHovered, setIsHovered] = useState(false); // Track hover state
-  const [auraColor1, setAura1Color] = useState('#f2f2f2'); // Default aura1 color
-  const [auraColor2, setAura2Color] = useState('#ffffff'); // Default aura2 color (lighter)
+  const [isHovered, setIsHovered] = useState(false);
+  const [auraColor1, setAura1Color] = useState('#f2f2f2');
+  const [auraColor2, setAura2Color] = useState('#ffffff');
 
   useEffect(() => {
-    // Analyze the colors from the album cover image
     if (songData.image) {
       analyzeImageColors(songData.image);
     }
@@ -52,12 +51,9 @@ const SpotifyPlayer = () => {
   };
 
   const isLighter = (color1, color2) => {
-    // Calculate the luminance of a color (higher value means lighter)
     const calculateLuminance = (color) => {
       const rgb = color.match(/\d+/g);
-      return (
-        0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]
-      );
+      return 0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2];
     };
 
     return calculateLuminance(color1) > calculateLuminance(color2);
@@ -65,7 +61,6 @@ const SpotifyPlayer = () => {
 
   useEffect(() => {
     if (auraColor1 && auraColor2) {
-      // Change the background color of the body based on auraColor
       document.body.style.background = `radial-gradient(circle at bottom, ${auraColor1}, ${auraColor2}, white 35%)`;
     }
     if (songData.title === 'Not playing') {
@@ -74,15 +69,15 @@ const SpotifyPlayer = () => {
   }, [auraColor1, auraColor2]);
 
   const containerStyle = {
-    background: '#f2f2f2', // Set the container background to transparent
+    background: '#f2f2f2',
     padding: '0.75rem',
     borderRadius: '0.75rem',
     display: 'flex',
     alignItems: 'center',
-    maxWidth: '18rem',
+    maxWidth: '20rem',
     margin: '0 auto',
     position: 'relative',
-    overflow: 'hidden',
+    overflow: 'visible',
   };
 
   const auraStyle = {
@@ -91,7 +86,7 @@ const SpotifyPlayer = () => {
     left: 0,
     right: 0,
     bottom: 0,
-    background: 'transparent', // Set the aura background to transparent
+    background: 'transparent',
     opacity: 0.5,
   };
 
@@ -102,46 +97,46 @@ const SpotifyPlayer = () => {
 
   const textContainerStyle = {
     flex: 1,
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
   };
 
   const titleStyle = {
-    fontSize: '16px',
-    marginBottom: '-15px',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-  };
-
-  const artistStyle = {
-    color: '#888',
     fontSize: '14px',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
+    marginBottom: '0',
   };
 
-  const slidingTextContainerStyle = {
+  const artistStyle = {
+    color: '#888',
+    fontSize: '12px',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    margin: '0',
+  };
+
+  const popupStyle = {
     position: 'absolute',
-    display: 'block',
-    bottom: '4.1rem', // Adjusted spacing at the bottom
-    left: isHovered ? '33%' : '0',
-    width: '100%',
-    padding: '1.8rem', // Adjusted padding
-    fontSize: '7px',
-    color: isHovered ? 'white' : 'transparent',
-    zIndex: -1,
-    transition: 'left 0.5s ease-in-out, color 0.5s ease-in-out',
+    top: '-2rem',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    padding: '0.5rem 0.5rem',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    color: 'white',
+    borderRadius: '0.5rem',
+    fontSize: '9px',
+    opacity: isHovered ? 1 : 0,
+    transition: 'opacity 0.3s ease',
+    pointerEvents: isHovered ? 'auto' : 'none',
+    zIndex: 1,
+    textAlign: 'center',
   };
 
   return (
     <div>
-      <div style={slidingTextContainerStyle}>
-        <div style={{ fontSize: '14px', padding: '.07rem' }}>
-          Currently Playing (on my Spotify ☺︎)
-        </div>
-        <div>
-          *************background color changes depending on album art ;)</div>
-      </div> 
       <div style={containerStyle} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         <div style={auraStyle}></div>
         <img src={songData.image} alt="Album cover" style={imageStyle} />
@@ -153,6 +148,14 @@ const SpotifyPlayer = () => {
             {songData.artist}
           </p>
         </div>
+        {isHovered && (
+          <div style={popupStyle}>
+            <div>currently playing (on my Spotify ☺︎)</div>
+            <div style={{ fontSize: '7px', marginTop: '0.25rem' }}>
+              gradient colors r pulled from album cover
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

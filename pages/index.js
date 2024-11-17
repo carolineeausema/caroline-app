@@ -117,9 +117,11 @@ const Home = ({ allPostsData }) => {
       </div>
 
       {/* Adding a GIF after the Content section */}
+      <a href="https://github.com/carolineeausema/UniversalAsciiWebcam">
       <div className={styles.gifContainer}>
         <img src="/images/ascii_web_gif.gif" alt="Creative coding showcase" className={styles.gif} />
       </div>
+      </a>
 
 {/* Map through linkSections (Links section) */}
 {linkSections.map((section, sectionIndex) => (

@@ -9,7 +9,7 @@ const P5Sketch = () => {
             const canvasParentRef = wrapperRef.current;
             const sketchFunction = (p) => {
                 const Scale = 15;
-                const radius = 70; // Radius around the cursor for color change
+                const radius = 240; // Radius around the cursor for color change
                 const minScale = 1; // Minimum pixel scale when close to the cursor
                 const maxScale = 20;
 
