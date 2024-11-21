@@ -8,6 +8,7 @@ import { getSortedPostsData } from '../lib/posts';
 import Date from '../components/date';
 import SpotifyPlayer from '../components/spotify';
 
+
 const Home = ({ allPostsData }) => {
 
   const do_not_show = [
