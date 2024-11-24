@@ -1,8 +1,11 @@
 .container {
     max-width: 36rem;
+    /* Default for larger screens */
     padding: 0 1rem;
-    margin: 1rem auto 3rem;
+    margin: 0 auto;
+    /* Ensure centering */
 }
+
 
 .iconlink {
     position: fixed;
@@ -137,3 +140,4 @@
     font-size: 12px;
     max-width: 6rem;
 }
+

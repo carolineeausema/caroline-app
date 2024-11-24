@@ -8,7 +8,6 @@
 }
 
 .title a {
-  color: #0070f3;
   text-decoration: none;
 }
 
@@ -57,13 +56,6 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-}
-
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
 }
 
 .card h3 {
@@ -167,7 +159,7 @@
 
 /* Styling for the GIF itself */
 .gif {
-  width: 1200%;
+  width: 80%;
   max-width: 1000px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
