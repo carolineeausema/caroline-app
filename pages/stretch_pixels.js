@@ -8,13 +8,18 @@ const P5Sketch = () => {
             const canvasParentRef = wrapperRef.current;
             const sketchFunction = (p) => {
                 let capture;
+                let canvasWidth, canvasHeight;
                 const Scale = 25;
                 const rectSize = Scale * 0.2;
 
                 p.setup = () => {
-                    p.createCanvas(800, 600).parent(canvasParentRef);
+                    // Set canvas dimensions based on the screen size
+                    canvasWidth = p.windowWidth < 800 ? p.windowWidth : 800;
+                    canvasHeight = (canvasWidth / 4) * 3; // Maintain 4:3 aspect ratio
+
+                    p.createCanvas(canvasWidth, canvasHeight).parent(canvasParentRef);
                     capture = p.createCapture(p.VIDEO);
-                    capture.size(800 / Scale, 600 / Scale);
+                    capture.size(canvasWidth / Scale, canvasHeight / Scale);
                     capture.hide();
                     p.pixelDensity(1);
                 };
@@ -44,9 +49,17 @@ const P5Sketch = () => {
                             const posX = X * Scale;
                             const posY = Y * Scale;
 
-                            p.rect(posX+rectSize+X1, posY+Y1, posX+rectSize+X1, posY+Y1);
+                            p.rect(posX + rectSize + X1, posY + Y1, posX + rectSize + X1, posY + Y1);
                         }
                     }
+                };
+
+                p.windowResized = () => {
+                    // Adjust the canvas size when the window is resized
+                    canvasWidth = p.windowWidth < 800 ? p.windowWidth : 800;
+                    canvasHeight = (canvasWidth / 4) * 3;
+                    p.resizeCanvas(canvasWidth, canvasHeight);
+                    capture.size(canvasWidth / Scale, canvasHeight / Scale);
                 };
             };
 
@@ -55,7 +68,7 @@ const P5Sketch = () => {
     }, []);
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', 'background-color': 'white' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', padding: '4rem', overflow: 'hidden' }}>
             <div ref={wrapperRef}></div>
         </div>
     );

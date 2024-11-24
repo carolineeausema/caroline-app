@@ -77,7 +77,7 @@ const P5Sketch = () => {
     }, []);
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: 'white' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', padding: '4rem', overflow: 'hidden' }}>
             <div ref={wrapperRef}></div>
         </div>
     );
