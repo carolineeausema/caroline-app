@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
+import { Calendar, momentLocalizer, Views } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
@@ -38,22 +38,18 @@ const events = [
   },
 ];
 
-
-
 const generateRecurringEvents = (events) => {
   const recurringEvents = [];
   events.forEach((event) => {
     event.days.forEach((day) => {
       const dayIndex = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].indexOf(day);
 
-      for (let week = 0; week < 16; week++) { // Assuming a 16-week semester
-        const baseDate = new Date(2025, 0, 13); // Semester start date (January 13, 2025)
+      for (let week = 0; week < 16; week++) {
+        const baseDate = new Date(2025, 0, 13);
         const eventDate = new Date(baseDate);
 
-        // Adjust to the correct day of the week
         eventDate.setDate(baseDate.getDate() + week * 7 + (dayIndex - baseDate.getDay()));
 
-        // Push the event to the array
         recurringEvents.push({
           title: event.title,
           start: new Date(
@@ -77,30 +73,44 @@ const generateRecurringEvents = (events) => {
   return recurringEvents;
 };
 
-
 const Schedule = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedSemester, setSelectedSemester] = useState('Spring 2025');
   const recurringEvents = generateRecurringEvents(events);
+
+  const handleSemesterChange = (e) => {
+    setSelectedSemester(e.target.value);
+  };
 
   return (
     <div>
       {/* Header */}
       <header style={{ backgroundColor: 'black', color: 'white', padding: '10px', position: 'relative' }}>
-        {/* Purdue Logo */}
         <img
-          src="/images/purdue-logo.png" // Replace with the actual path to your Purdue logo
+          src="/images/purdue-logo.png"
           alt="Purdue Logo"
           style={{ height: '40px', position: 'absolute', top: '10px', left: '10px' }}
         />
-
-        {/* Title */}
-        <div style={{ textAlign: 'center', color: 'white' }}>
-          <h1 style={{ margin: 0 }}>Purdue University</h1>
-          <p style={{ margin: 0 }}>Student: Caroline Ausema</p>
-          <p style={{ margin: 0 }}>Spring 2025</p>
+        <div style={{ textAlign: 'center', color: 'white', marginBottom: '20px' }}>
+          <h1 style={{ margin: '0', fontSize: '24px' }}>Purdue University</h1>
+          <p style={{ margin: '0', fontSize: '14px' }}>Student: Caroline Ausema</p>
+          <select
+            value={selectedSemester}
+            onChange={handleSemesterChange}
+            style={{
+              backgroundColor: 'black',
+              color: 'white',
+              border: '1px solid white',
+              padding: '5px',
+              fontSize: '14px',
+              marginTop: '5px',
+            }}
+          >
+            <option value="Spring 2025">Spring 2025</option>
+            <option value="Fall 2024">Fall 2024</option>
+            <option value="Summer 2024">Summer 2024</option>
+          </select>
         </div>
-
-        {/* Hamburger Menu */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           style={{
@@ -116,8 +126,6 @@ const Schedule = () => {
         >
           ☰
         </button>
-
-        {/* Dropdown Menu */}
         {menuOpen && (
           <div
             style={{
@@ -154,15 +162,37 @@ const Schedule = () => {
 
       {/* Calendar */}
       <div style={{ padding: '20px' }}>
-        <h2>Your Class Schedule</h2>
+        <h2 style={{ marginBottom: '20px', fontSize: '20px' }}>Your Class Schedule ({selectedSemester})</h2>
         <Calendar
           localizer={localizer}
           events={recurringEvents}
           startAccessor="start"
           endAccessor="end"
-          style={{ height: 500 }}
+          defaultView={Views.WORK_WEEK}
+          views={['work_week', 'day']}
+          defaultDate={new Date(2025, 0, 13)}
+          style={{ height: 500, fontSize: '12px' }}
         />
       </div>
+
+      {/* Footer */}
+      <footer style={{ backgroundColor: 'black', padding: '20px', marginTop: '20px', textAlign: 'center' }}>
+        <div style={{ marginBottom: '10px' }}>
+          <a href="#about" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>
+            About Purdue
+          </a>
+          <a href="#admissions" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>
+            Admissions
+          </a>
+          <a href="#academics" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>
+            Academics
+          </a>
+          <a href="#campus-life" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>
+            Campus Life
+          </a>
+        </div>
+        <p style={{ fontSize: '12px', color: '#777' }}>© 2025 Purdue University. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
